@@ -1,1 +1,1 @@
-These files is just a reference for the project. It is the persistence with MongoDB assignment (Munoz).
+These files are just a reference for the project. It is the persistence with MongoDB assignment (Munoz).
