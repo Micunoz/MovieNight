@@ -22,3 +22,5 @@ usersRouter.get("/:userId/reviews", async (req, res) => {
 usersRouter.post("/", async (req, res) => {
 
 });
+
+export default usersRouter;

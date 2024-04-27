@@ -7,7 +7,7 @@ import { MongoClient } from "mongodb";
 async function connect() {
 	const client = new MongoClient("mongodb://localhost:27017");
 	const connection = await client.connect();
-	return connection.db("spa-database");
+	return connection.db("MovieNight-db");
 }
 
 const port = 3001;
