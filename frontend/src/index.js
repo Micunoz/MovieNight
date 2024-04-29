@@ -1,13 +1,58 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Layout from "./Layout";
+import MovieList, { loadMovies } from "./MovieList";
+import MovieDetail, { loadMovieDetail } from "./MovieDetail";
+import MovieForm from "./MovieForm";
+import UserList, { loadUsers } from "./UserList";
+import UserDetail, { loadUserDetail } from "./UserDetail";
+import UserForm from "./UserForm";
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/movies/add",
+        element: <MovieForm />,
+      },
+      {
+        path: "/movies/:movieId",
+        element: <MovieDetail />,
+        loader: loadMovieDetail,
+      },
+      {
+        path: "/users/add",
+        element: <UserForm />,
+      },
+      {
+        path: "/users/:userId",
+        element: <UserDetail />,
+        loader: loadUserDetail,
+      },
+      {
+        path: "/users",
+        element: <UserList />,
+        loader: loadUsers,
+      },
+      {
+        path: "/movies",
+        element: <MovieList />,
+        loader: loadMovies,
+      },
+    ]
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
