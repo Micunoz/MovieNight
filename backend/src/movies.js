@@ -11,13 +11,28 @@ moviesRouter.get("/", async (req, res) => {
     return res.json(movies);
 });
 
-//GET /movie/:movieTitle
+//GET /movie/:movieId
 moviesRouter.get("/:movieId", async (req, res) => {
     const db = req.app.get("db");
     const movie = await db.collection("movies").findOne({ _id: new ObjectId(req.params.movieId) })
 
     return res.json(movie);
 });
+
+// POST /movie/:movieId/newReview
+moviesRouter.post("/:movieId/newReview/:userId", async (req, res) => {
+    const db = req.app.get("db");
+
+    const review = {
+        movieId: req.params.movieId,
+        userId: req.params.userId,
+        review: req.body.review,
+    };
+
+    const result = await db.collection("reviews").insertOne(review);
+
+    res.status(201).json(result.insertedId);
+})
 
 //GET /movie/:movieTitle/reviews 
 moviesRouter.get("/:movieTitle/reviews", async (req, res) => {
