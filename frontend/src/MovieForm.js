@@ -19,13 +19,18 @@ export default function MovieForm() {
     const [message, setMessage] = useState(initialResultMessage);
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData((formData) => {
-            return {
+        if(event.target.name === "Title") {
+            setFormData({
                 ...formData,
-                [name]: value,
-            };
-        });
+                Title: event.target.value
+            });
+        }
+        if(event.target.name === "Year") {
+            setFormData({
+                ...formData,
+                Year: event.target.value
+            });
+        }
     };
 
     const handleSubmit = async (event) => {
@@ -68,7 +73,7 @@ export default function MovieForm() {
                         type="text"
                         name="Title"
                         onChange={handleChange}
-                        value={Title}
+                        value={formData.Title}
                     />
                 </label>
                 <label>
@@ -77,7 +82,7 @@ export default function MovieForm() {
                         type="text"
                         name="Year"
                         onChange={handleChange}
-                        value={Year}
+                        value={formData.Year}
                     />
                 </label>
                 <button type="submit">Add Movie</button>
