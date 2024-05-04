@@ -6,7 +6,7 @@ export default function MovieForm() {
     // blank form on load
     const initialFormData = {
         Title: '',
-        Year: null,
+        Year: '',
     };
 
     // no message at start
@@ -21,30 +21,18 @@ export default function MovieForm() {
     const handleChange = (event) => {
         const {name, value } = event.target;
 
-        setFormValue((formData) => {
+        setFormData((formData) => {
             return {
                 ...formData,
                 [name]: value,
             };
         });
-
-        // if(event.target.name === "Title") {
-        //     setFormData({
-        //         ...formData,
-        //         Title: event.target.value
-        //     });
-        // }
-        // if(event.target.name === "Year") {
-        //     setFormData({
-        //         ...formData,
-        //         Year: event.target.value
-        //     });
-        // }
     };
 
     const handleSubmit = async (event) => {
         // no refresh on submit
         event.preventDefault();
+        console.log("formData:", formData);
         // post request w/ new project data
         const result = await fetch(`${BASE_URL}/movie`, {
             method: "POST",

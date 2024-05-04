@@ -62,10 +62,10 @@ moviesRouter.put("/:movieId/favorites", async (req, res) => {
 moviesRouter.post("/", async (req, res) => {
     const db = req.app.get("db");
     var response;
-    if (req.body.movieYear) {
-        response = await fetch(`http://www.omdbapi.com/?t=${req.body.movieTitle}&y=${req.body.movieYear}&apikey=352ecf23`);
+    if (req.body.Year) {
+        response = await fetch(`http://www.omdbapi.com/?t=${req.body.Title}&y=${req.body.Year}&apikey=352ecf23`);
     } else {
-        response = await fetch(`http://www.omdbapi.com/?t=${req.body.movieTitle}&apikey=352ecf23`);
+        response = await fetch(`http://www.omdbapi.com/?t=${req.body.Title}&apikey=352ecf23`);
     }
     const data = await response.json();
 
