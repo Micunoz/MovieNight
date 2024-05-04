@@ -49,7 +49,7 @@ export default function MovieForm() {
 
         // send msg on success
         const newId = (await result.json());
-        setMessage({ msg: "Successfully created!\n", newId });
+        setMessage({ msg: "Successfully added!\n", newId });
         setFormData(initialFormData);
     }
 
@@ -67,8 +67,8 @@ export default function MovieForm() {
                     <input
                         type="text"
                         name="Title"
-                        value={formData.Title}
                         onChange={handleChange}
+                        value={Title}
                     />
                 </label>
                 <label>
@@ -76,8 +76,8 @@ export default function MovieForm() {
                     <input 
                         type="text"
                         name="Year"
-                        value={formData.Year}
                         onChange={handleChange}
+                        value={Year}
                     />
                 </label>
                 <button type="submit">Add Movie</button>
