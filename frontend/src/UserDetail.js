@@ -8,7 +8,7 @@ async function loadUserDetail(request) {
     return await response.json();
 }
 
-export default function userDetail() {
+export default function UserDetail() {
     const user = useLoaderData();
 
     return (
