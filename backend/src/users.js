@@ -11,13 +11,8 @@ usersRouter.get("/", async (req, res) => {
     return res.json(users);
 });
 
-//GET /user/:userId/favorite
-usersRouter.get("/:userId/favorite", async (req, res) => {
-
-});
-
-//GET /user/:userId/reviews
-usersRouter.get("/:userId/reviews", async (req, res) => {
+//GET /user/:userId
+usersRouter.get("/:userId", async (req, res) => {
 
 });
 
@@ -25,7 +20,13 @@ usersRouter.get("/:userId/reviews", async (req, res) => {
 usersRouter.post("/", async (req, res) => {
     const db = req.app.get("db");
 
-    // body should have first name, last name, maybe fav movie, etc.
+    // body should have first name, last name, etc.
+    const fullUser = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        favoriteMovies: []
+    }
+
     const result = await db.collection("users").insertOne(req.body);
     console.info(result);
     res.status(201).json(result.insertedId);
