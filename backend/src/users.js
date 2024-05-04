@@ -13,7 +13,11 @@ usersRouter.get("/", async (req, res) => {
 
 //GET /user/:userId
 usersRouter.get("/:userId", async (req, res) => {
+    const db = req.app.get("db");
+    const user = await db.collection("users").findOne({ _id: new ObjectId(req.params.userId) });
+    const reviews = await db.collection("reviews").find({ userId: req.params.userId }).toArray();
 
+    return res.json({favorites: user.favoriteMovies, reviews: reviews});
 });
 
 //POST /user
@@ -24,10 +28,10 @@ usersRouter.post("/", async (req, res) => {
     const fullUser = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        favoriteMovies: []
     }
 
     const result = await db.collection("users").insertOne(req.body);
+    await db.collection("users").updateOne({ _id: result.insertedId}, { $set: { favoriteMovies: [] } });
     console.info(result);
     res.status(201).json(result.insertedId);
 });
