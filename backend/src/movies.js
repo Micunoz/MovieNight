@@ -19,13 +19,14 @@ moviesRouter.get("/:movieId", async (req, res) => {
     return res.json(movie);
 });
 
-// POST /movie/:movieId/newReview
-moviesRouter.post("/:movieId/newReview/:userId", async (req, res) => {
+// POST /movie/:movieId/reviews
+moviesRouter.post("/:movieId/reviews", async (req, res) => {
     const db = req.app.get("db");
 
     const review = {
         movieId: req.params.movieId,
-        userId: req.params.userId,
+        userId: req.body.userId,
+        userName: req.body.userName,
         review: req.body.review,
     };
 
@@ -36,7 +37,25 @@ moviesRouter.post("/:movieId/newReview/:userId", async (req, res) => {
 
 //GET /movie/:movieTitle/reviews 
 moviesRouter.get("/:movieTitle/reviews", async (req, res) => {
+    const db = req.app.get("db");
+    const movies = await db.collection("movies").find().toArray();
 
+    return res.json(movies);
+});
+
+//PUT /movie/:movieId/favorites
+moviesRouter.put("/:movieId/favorites", async (req, res) => {
+    const db = req.app.get("db");
+
+    const movieId = req.params.movieId;
+    const user = await db.collection("users").findOne({ _id: new ObjectId(req.body.userId) });
+
+    // res.status(201).json(user);
+
+    user.favoriteMovies.push(movieId);
+
+    await db.collection("users").updateOne({ _id: new ObjectId(req.body.userId)}, { $set: { favoriteMovies: user.favoriteMovies } });
+    return res.status(200).end();
 });
 
 //POST /movie 
