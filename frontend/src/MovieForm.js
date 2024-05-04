@@ -19,18 +19,27 @@ export default function MovieForm() {
     const [message, setMessage] = useState(initialResultMessage);
 
     const handleChange = (event) => {
-        if(event.target.name === "Title") {
-            setFormData({
+        const {name, value } = event.target;
+
+        setFormValue((formData) => {
+            return {
                 ...formData,
-                Title: event.target.value
-            });
-        }
-        if(event.target.name === "Year") {
-            setFormData({
-                ...formData,
-                Year: event.target.value
-            });
-        }
+                [name]: value,
+            };
+        });
+
+        // if(event.target.name === "Title") {
+        //     setFormData({
+        //         ...formData,
+        //         Title: event.target.value
+        //     });
+        // }
+        // if(event.target.name === "Year") {
+        //     setFormData({
+        //         ...formData,
+        //         Year: event.target.value
+        //     });
+        // }
     };
 
     const handleSubmit = async (event) => {
