@@ -20,9 +20,11 @@ export default function MovieForm() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value,
+        setFormData((formData) => {
+            return {
+                ...formData,
+                [name]: value,
+            };
         });
     };
 
@@ -41,7 +43,7 @@ export default function MovieForm() {
 
         // catch backend failure
         if (result.status !== 201) {
-            setMessage({ msg: "Failed to create new project", newId: null });
+            setMessage({ msg: "Failed to add new movie", newId: null });
             return;
         }
 
