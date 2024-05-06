@@ -21,11 +21,11 @@ const router = createBrowserRouter([
         path: "/movies/add",
         element: <MovieForm />,
       },
-      // {
-      //   path: "/movies/:movieId",
-      //   element: <MovieDetail />,
-      //   loader: loadMovieDetail,
-      // },
+      {
+        path: "/movies/:movieId",
+        element: <MovieDetail />,
+        loader: loadMovieDetail,
+      },
       // {
       //   path: "/users/add",
       //   element: <UserForm />,
