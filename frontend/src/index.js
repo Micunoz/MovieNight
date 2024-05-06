@@ -21,25 +21,25 @@ const router = createBrowserRouter([
         path: "/movies/add",
         element: <MovieForm />,
       },
-      {
-        path: "/movies/:movieId",
-        element: <MovieDetail />,
-        loader: loadMovieDetail,
-      },
-      {
-        path: "/users/add",
-        element: <UserForm />,
-      },
-      {
-        path: "/users/:userId",
-        element: <UserDetail />,
-        loader: loadUserDetail,
-      },
-      {
-        path: "/users",
-        element: <UserList />,
-        loader: loadUsers,
-      },
+      // {
+      //   path: "/movies/:movieId",
+      //   element: <MovieDetail />,
+      //   loader: loadMovieDetail,
+      // },
+      // {
+      //   path: "/users/add",
+      //   element: <UserForm />,
+      // },
+      // {
+      //   path: "/users/:userId",
+      //   element: <UserDetail />,
+      //   loader: loadUserDetail,
+      // },
+      // {
+      //   path: "/users",
+      //   element: <UserList />,
+      //   loader: loadUsers,
+      // },
       {
         path: "/movies",
         element: <MovieList />,

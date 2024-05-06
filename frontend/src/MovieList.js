@@ -2,12 +2,14 @@ import React from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 
 async function loadMovies() {
-    const response = await fetch('http://localhost:3001/movies/');
+    const response = await fetch('http://localhost:3001/movie/');
     return await response.json();
 }
 
 export default function MovieList() {
     const movies = useLoaderData();
+
+    console.log(movies);
 
 	return (
 		<>
@@ -17,7 +19,8 @@ export default function MovieList() {
                 {movies.map((item) => (
                     <article className='movie' key={item._id}>
                         <Link to={`/movies/${item._id}`}>
-                            <h3>{item.name}</h3>
+                            <h3>{item.Title}</h3>
+                            <h5>({item.Year})</h5>
                         </Link>
                     </article>
                 ))}
