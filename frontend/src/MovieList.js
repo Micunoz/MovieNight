@@ -11,23 +11,23 @@ export default function MovieList() {
 
     console.log(movies);
 
-	return (
-		<>
+    return (
+        <>
             <h2>List of Movies</h2>
             {/* make article for each movie */}
             <div className='flex-container'>
                 {movies.map((item) => (
                     <article className='movie' key={item._id}>
                         <Link to={`/movies/${item._id}`}>
-                            <h3>{item.Title}</h3>
                             <img src={item.Poster} alt={item.Title}></img>
+                            <h3>{item.Title}</h3>
                             <h5>({item.Year})</h5>
                         </Link>
                     </article>
                 ))}
             </div>
         </>
-	);
+    );
 }
 
 export { loadMovies };

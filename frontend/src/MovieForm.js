@@ -45,7 +45,7 @@ export default function MovieForm() {
 
         // catch backend failure
         if (result.status !== 201) {
-            setMessage({ msg: "Failed to add new movie", newId: null });
+            setMessage({ msg: "Failed to add new movie", newId: null});
             return;
         }
 
@@ -60,7 +60,7 @@ export default function MovieForm() {
             {message.msg &&
                 <>
                     <label>{message.msg}</label>
-                    <Link to={`/movie/${message.newId}`}>View Movie</Link>
+                    {message.newId && <Link to={`/movies/${message.newId}`}>View Movie</Link>}
                 </>
             }
             <form onSubmit={handleSubmit}>
