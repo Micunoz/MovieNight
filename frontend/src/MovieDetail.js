@@ -54,10 +54,10 @@ export default function MovieDetail() {
         });
 
         // catch backend failure
-        if (result.status == 400) {
+        if (result.status === 400) {
             setMessage({ msg: "Failed to add favorite"});
             return;
-        } else if (result.status == 406) {
+        } else if (result.status === 406) {
             setMessage({ msg: "Movie already in favorites"});
             return;
         }
@@ -73,6 +73,7 @@ export default function MovieDetail() {
                 <h2>Movie {movie._id}</h2>
                 <p>Title: {movie.Title}</p>
                 <p>Year: {movie.Year}</p>
+                <Link to={`/movies/${movie._id}/reviews`}>Leave a Review</Link>
             </div>
 
             <div>

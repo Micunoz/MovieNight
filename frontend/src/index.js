@@ -10,6 +10,7 @@ import MovieForm from "./MovieForm";
 import UserList, { loadUsers } from "./UserList";
 import UserDetail, { loadUserDetail } from "./UserDetail";
 import UserForm from "./UserForm";
+import MovieReviews, { loadReviews } from "./MovieReviews";
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
         element: <MovieList />,
         loader: loadMovies,
       },
+      {
+        path: "/movies/:movieId/reviews",
+        element: <MovieReviews />,
+        loader: loadReviews,
+      }
     ]
   }
 ]);
