@@ -17,7 +17,7 @@ usersRouter.get("/:userId", async (req, res) => {
     const user = await db.collection("users").findOne({ _id: new ObjectId(req.params.userId) });
     const reviews = await db.collection("reviews").find({ userId: req.params.userId }).toArray();
 
-    return res.json({favorites: user.favoriteMovies, reviews: reviews});
+    return res.json({_id: user._id, firstName: user.firstName, lastName: user.lastName, favorites: user.favoriteMovies, reviews: reviews});
 });
 
 //POST /user

@@ -35,10 +35,10 @@ moviesRouter.post("/:movieId/reviews", async (req, res) => {
     res.status(201).json(result.insertedId);
 })
 
-//GET /movie/:movieTitle/reviews 
+//GET /movie/:movieId/reviews 
 moviesRouter.get("/:movieTitle/reviews", async (req, res) => {
     const db = req.app.get("db");
-    const movies = await db.collection("movies").find().toArray();
+    const movies = await db.collection("movies").find({ _id: new ObjectId(req.params.movieId)}).toArray();
 
     return res.json(movies);
 });

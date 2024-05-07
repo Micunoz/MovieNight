@@ -30,16 +30,16 @@ const router = createBrowserRouter([
       //   path: "/users/add",
       //   element: <UserForm />,
       // },
-      // {
-      //   path: "/users/:userId",
-      //   element: <UserDetail />,
-      //   loader: loadUserDetail,
-      // },
-      // {
-      //   path: "/users",
-      //   element: <UserList />,
-      //   loader: loadUsers,
-      // },
+      {
+        path: "/users/:userId",
+        element: <UserDetail />,
+        loader: loadUserDetail,
+      },
+      {
+        path: "/users",
+        element: <UserList />,
+        loader: loadUsers,
+      },
       {
         path: "/movies",
         element: <MovieList />,

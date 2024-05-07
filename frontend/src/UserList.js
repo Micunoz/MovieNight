@@ -2,7 +2,7 @@ import React from 'react';
 import { useLoaderData, Link } from 'react-router-dom';
 
 async function loadUsers() {
-    const response = await fetch('http://localhost:3001/users/');
+    const response = await fetch('http://localhost:3001/user/');
     return await response.json();
 }
 
@@ -17,7 +17,7 @@ export default function UserList() {
                 {users.map((item) => (
                     <article className='user' key={item._id}>
                         <Link to={`/users/${item._id}`}>
-                            <h3>{item.name}</h3>
+                            <h3>{item.firstName} {item.lastName}</h3>
                         </Link>
                     </article>
                 ))}
