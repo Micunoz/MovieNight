@@ -50,12 +50,17 @@ moviesRouter.put("/:movieId/favorites", async (req, res) => {
     const movieId = req.params.movieId;
     const user = await db.collection("users").findOne({ _id: new ObjectId(req.body.userId) });
 
-    // res.status(201).json(user);
+    
+    if (!user.favoriteMovies.includes(movieId)) {
+        user.favoriteMovies.push(movieId);
 
-    user.favoriteMovies.push(movieId);
-
-    await db.collection("users").updateOne({ _id: new ObjectId(req.body.userId)}, { $set: { favoriteMovies: user.favoriteMovies } });
-    return res.status(200).end();
+        await db.collection("users").updateOne({ _id: new ObjectId(req.body.userId)}, { $set: { favoriteMovies: user.favoriteMovies } });
+        return res.status(200).end();
+    } else if (user.favoriteMovies.includes(movieId)) {
+        return res.status(406).end();
+    } else {
+        return res.status(400).end();
+    }
 });
 
 //POST /movie 
