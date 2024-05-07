@@ -71,9 +71,16 @@ export default function MovieDetail() {
         <div>
             <div className='movie-id'>
                 <h2>Movie {movie._id}</h2>
+                <img src={movie.Poster} alt={movie.Title}></img>
                 <p>Title: {movie.Title}</p>
                 <p>Year: {movie.Year}</p>
-                <Link to={`/movies/${movie._id}/reviews`}>Leave a Review</Link>
+                <p>Rated: {movie.Rated}</p>
+                <p>Runtime: {movie.Runtime}</p>
+                <p>Genre: {movie.Genre}</p>
+                <p>Director: {movie.Director}</p>
+                <p>Actors: {movie.Actors}</p>
+                <p>Plot: {movie.Plot}</p>
+                <Link to={`/movies/${movie._id}/reviews`}>Reviews</Link>
             </div>
 
             <div>

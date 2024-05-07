@@ -20,6 +20,7 @@ export default function MovieList() {
                     <article className='movie' key={item._id}>
                         <Link to={`/movies/${item._id}`}>
                             <h3>{item.Title}</h3>
+                            <img src={item.Poster} alt={item.Title}></img>
                             <h5>({item.Year})</h5>
                         </Link>
                     </article>
