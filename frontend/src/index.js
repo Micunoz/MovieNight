@@ -26,10 +26,10 @@ const router = createBrowserRouter([
         element: <MovieDetail />,
         loader: loadMovieDetail,
       },
-      // {
-      //   path: "/users/add",
-      //   element: <UserForm />,
-      // },
+      {
+        path: "/users/add",
+        element: <UserForm />,
+      },
       {
         path: "/users/:userId",
         element: <UserDetail />,
