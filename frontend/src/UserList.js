@@ -16,7 +16,7 @@ export default function UserList() {
             <div className='flex-container'>
                 {users.map((item) => (
                     <article className='user' key={item._id}>
-                        <Link to={`/users/${item._id}`}>
+                        <Link to={`/users/${item._id}`} class="usercard">
                             <h3>{item.firstName} {item.lastName}</h3>
                         </Link>
                     </article>

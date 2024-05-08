@@ -18,7 +18,7 @@ export default function MovieList() {
             <div className='flex-container'>
                 {movies.map((item) => (
                     <article className='movie' key={item._id}>
-                        <Link to={`/movies/${item._id}`}>
+                        <Link to={`/movies/${item._id}`} class="moviecard">
                             <img src={item.Poster} alt={item.Title}></img>
                             <h3>{item.Title}</h3>
                             <h5>({item.Year})</h5>

@@ -80,10 +80,10 @@ export default function MovieDetail() {
                 <p>Director: {movie.Director}</p>
                 <p>Actors: {movie.Actors}</p>
                 <p>Plot: {movie.Plot}</p>
-                <Link to={`/movies/${movie._id}/reviews`}>Reviews</Link>
+                <Link to={`/movies/${movie._id}/reviews`} class="moviecard" id="review">Reviews</Link>
             </div>
 
-            <div>
+            <div class="favorite">
                 {message.msg &&
                     <>
                         <label>{message.msg}</label>

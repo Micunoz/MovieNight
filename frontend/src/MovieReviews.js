@@ -69,19 +69,24 @@ export default function MovieReviews() {
 
     return (
         <>
-            <img src={movie.Poster} alt={movie.Title}></img>
+
+            <img src={movie.Poster} alt={movie.Title} class="reviewposter" id="poster"></img>
             <h2>Reviews for {movie.Title}</h2>
-            {/* make article for each movie */}
+            {/* make article for each review */}
             <div className='flex-container'>
                 {reviews.map((item) => (
-                    <article className='movie' key={item._id}>
+                    <article className='review' key={item._id}>
                         <h3>{item.userName}</h3>
-                        <h5>({item.review})</h5>
+                        <h5>"{item.review}"</h5>
                     </article>
                 ))}
             </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
 
-            <div>
+            <div className="reviewbox">
                 {message.msg &&
                     <>
                         <label>{message.msg}</label>
@@ -93,17 +98,20 @@ export default function MovieReviews() {
                         <option>Select A User</option>
                         {users.map((user) => <option value={user._id}>{user.firstName} {user.lastName}</option>)}
                     </select>
-
+                    <br></br>
+                    <br/>
                     <label>
                         Review:
-                        <input
+                        <br></br>
+                        <textarea
                             type="text"
                             name="review"
                             onChange={handleChange}
                             value={formData.review}
+                            style={{ width:"500px", height: "150px", }}
                         />
                     </label>
-
+                    <br></br>
                     <button type="submit">Submit</button>
                 </form>
             </div>

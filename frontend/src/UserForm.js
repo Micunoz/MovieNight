@@ -57,6 +57,7 @@ export default function UserForm() {
 
     return (
         <>
+            <h2>Add a new user:</h2>
             {message.msg &&
                 <>
                     <label>{message.msg}</label>

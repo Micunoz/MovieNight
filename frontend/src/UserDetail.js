@@ -32,7 +32,8 @@ export default function UserDetail() {
             <div className='flex-container'>
                 {favorites.map((item) => (
                     <article className='movie' key={item._id}>
-                        <Link to={`/movies/${item._id}`}>
+                        <Link to={`/movies/${item._id}`} class="moviecard">
+                            <img src={item.Poster} alt={item.Title}></img>
                             <h3>{item.Title}</h3>
                             <h5>({item.Year})</h5>
                         </Link>
@@ -43,7 +44,7 @@ export default function UserDetail() {
             {/* make article for each review */}
             <div className='flex-container'>
                 {user.reviews.map((item) => (
-                    <article className='movie' key={item._id}>
+                    <article className='review' key={item._id}>
                         <h3>{item.movieTitle} ({item.movieYear})</h3>
                         <h4>{item.userName}</h4>
                         <h5>({item.review})</h5>

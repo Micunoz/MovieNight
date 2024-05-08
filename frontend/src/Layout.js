@@ -4,19 +4,20 @@ import './App.css';
 function Layout() {
     return (
         <>
+
             <header>
                 <ul>
                     <li>
-                        <Link to="/movies">Movie List</Link>
+                        <Link to="/movies" class="linkheader">Movie List</Link>
                     </li>
                     <li>
-                        <Link to="/movies/add">Add Movie</Link>
+                        <Link to="/movies/add" class="linkheader">Add Movie</Link>
                     </li>
                     <li>
-                        <Link to="/users">User List</Link>
+                        <Link to="/users" class="linkheader">User List</Link>
                     </li>
                     <li>
-                        <Link to="/users/add">Add User</Link>
+                        <Link to="/users/add" class="linkheader">Add User</Link>
                     </li>
                 </ul>
             </header>

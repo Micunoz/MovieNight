@@ -57,6 +57,7 @@ export default function MovieForm() {
 
     return (
         <>
+            <h2>Add a movie to the watchlist:</h2>
             {message.msg &&
                 <>
                     <label>{message.msg}</label>
@@ -74,7 +75,7 @@ export default function MovieForm() {
                     />
                 </label>
                 <label>
-                    Year:
+                    Year (optional):
                     <input 
                         type="text"
                         name="Year"
