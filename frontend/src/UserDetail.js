@@ -16,7 +16,7 @@ async function loadUserDetail(request) {
 }
 
 export default function UserDetail() {
-    const {user, favorites} = useLoaderData();
+    const { user, favorites } = useLoaderData();
 
     console.log("user:", user);
     console.log("favorites:", favorites);
@@ -36,6 +36,17 @@ export default function UserDetail() {
                             <h3>{item.Title}</h3>
                             <h5>({item.Year})</h5>
                         </Link>
+                    </article>
+                ))}
+            </div>
+            <h2>Reviews</h2>
+            {/* make article for each review */}
+            <div className='flex-container'>
+                {user.reviews.map((item) => (
+                    <article className='movie' key={item._id}>
+                        <h3>{item.movieTitle} ({item.movieYear})</h3>
+                        <h4>{item.userName}</h4>
+                        <h5>({item.review})</h5>
                     </article>
                 ))}
             </div>

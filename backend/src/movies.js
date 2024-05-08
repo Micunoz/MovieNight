@@ -26,6 +26,8 @@ moviesRouter.post("/:movieId/reviews", async (req, res) => {
     const user = await db.collection("users").findOne({ _id: new ObjectId(req.body.userId) });
     const userName = user.firstName + " " + user.lastName;
 
+    const movie = await db.collection("movies").findOne({_id: new ObjectId(req.params.movieId)});
+
     const dupe = await db.collection("reviews").findOne({ movieId: req.params.movieId, userId: req.body.userId });
     if (dupe) {
         res.status(400).end();
@@ -33,6 +35,8 @@ moviesRouter.post("/:movieId/reviews", async (req, res) => {
         const review = {
             movieId: req.params.movieId,
             userId: req.body.userId,
+            movieTitle: movie.Title,
+            movieYear: movie.Year,
             userName: userName,
             review: req.body.review,
         };
